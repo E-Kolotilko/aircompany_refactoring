@@ -36,22 +36,19 @@ public class Airport {
     }
 
     public PassengerPlane getPassengerPlaneWithMaxPassengersCapacity() {
-        List<PassengerPlane> passengerPlanes = getPassengerPlanes();
-        return passengerPlanes.stream()
+        return getPassengerPlanes().stream()
                 .max(Comparator.comparingInt(PassengerPlane::getPassengersCapacity))
                 .orElseThrow(() -> new IllegalStateException("No passenger planes in Airport"));
     }
 
     public List<MilitaryPlane> getTransportMilitaryPlanes() {
-        List<MilitaryPlane> militaryPlanes = getMilitaryPlanes();
-        return militaryPlanes.stream()
+        return getMilitaryPlanes().stream()
                 .filter( plane -> plane.getType() == MilitaryType.TRANSPORT)
                 .collect(Collectors.toList());
     }
 
     public List<MilitaryPlane> getBomberMilitaryPlanes() {
-        List<MilitaryPlane> militaryPlanes = getMilitaryPlanes();
-        return militaryPlanes.stream()
+        return getMilitaryPlanes().stream()
                 .filter( plane -> plane.getType() == MilitaryType.BOMBER)
                 .collect(Collectors.toList());
     }
